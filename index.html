@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zara Suvanto | Video Editor & Director</title>
+<meta name="description" content="Portfolio of Zara Suvanto, video editor and director, founder of ZES Creative, Syracuse University Newhouse School.">
+<meta property="og:title" content="Zara Suvanto | Video Editor & Director">
+<meta property="og:description" content="Commercial spots, short-form for brands, and news packages. Founder of ZES Creative.">
+<meta property="og:image" content="img/favicon.png">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#181712;        /* ZES black */
+  --film:#24211c;       /* film base */
+  --ink-3:#2f2b25;
+  --red:#b82225;        /* ZES red */
+  --red-hot:#d22a2d;
+  --paper:#f4f2ed;
+  --mute:#9a958a;
+  --line:rgba(244,242,237,.12);
+  --frame-h:clamp(260px,50vh,500px);
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--paper);font-family:"Archivo",system-ui,sans-serif;font-variation-settings:"wdth" 100;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red-hot);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Display type: expanded Archivo, echoing the ZES wordmark */
+.display{font-variation-settings:"wdth" 125;font-weight:850;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);background:linear-gradient(var(--ink) 30%,rgba(24,23,18,0));transition:transform .3s}
+.nav__home{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-variation-settings:"wdth" 115;letter-spacing:.01em}
+.nav__home img{width:22px;height:auto}
+.nav ul{display:flex;gap:clamp(14px,3vw,36px);list-style:none}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mute);transition:color .2s}
+.nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--paper)}
+@media (max-width:640px){.nav__home span{display:none}.nav ul{gap:16px}.nav ul a{font-size:14px}}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(24px,5vw,80px);padding:110px var(--pad) 70px}
+.hero__snake{width:100%;max-width:420px;justify-self:end}
+.hero__snake svg{width:100%;height:auto;overflow:visible}
+.hero__name{font-size:clamp(48px,9.4vw,150px)}
+.hero__name span{display:block;overflow:hidden}
+.hero__name span i{display:block;font-style:normal;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.7,.1,1) forwards}
+.hero__name span:nth-child(1) i{animation-delay:1.7s}
+.hero__name span:nth-child(2) i{animation-delay:1.85s}
+.hero__lede{max-width:34ch;margin-top:28px;font-size:clamp(17px,1.5vw,21px);color:var(--paper);opacity:0;animation:fade .8s 2.3s forwards}
+.hero__lede em{font-style:normal;color:var(--mute)}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;opacity:0;animation:fade .8s 2.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid var(--paper);transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn--red{background:var(--red);border-color:var(--red);color:#fff}
+.btn--red:hover{background:var(--red-hot);border-color:var(--red-hot);color:#fff}
+.btn svg{width:16px;height:16px}
+@keyframes rise{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+#drawPath{stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 1.7s cubic-bezier(.55,.1,.3,1) .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;align-content:center;padding-top:96px}
+  .hero__snake{max-width:150px;justify-self:start}
+}
+
+/* ---------- Reels (film strips) ---------- */
+.reel{padding:clamp(70px,11vh,130px) 0 0}
+.reel__head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:20px 40px;padding:0 var(--pad) 28px}
+.reel__title{font-size:clamp(36px,6.4vw,96px)}
+.reel__meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:18px;color:var(--mute);font-size:15px}
+.reel__meta strong{color:var(--paper);font-weight:600}
+.reel__about{max-width:62ch;margin-top:10px;font-size:17px}
+.reel__tag{color:var(--red-hot);font-weight:700;font-variation-settings:"wdth" 115}
+.reel__nav{display:flex;gap:10px}
+.arrow{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s,border-color .2s,opacity .2s}
+.arrow:hover:not(:disabled){background:var(--red);border-color:var(--red)}
+.arrow:disabled{opacity:.3;cursor:default}
+.arrow svg{width:20px;height:20px}
+@media (max-width:640px){.reel__head{grid-template-columns:1fr}.reel__nav{display:none}}
+
+.strip{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding-left:var(--pad)}
+.strip::-webkit-scrollbar{display:none}
+.strip.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.strip.is-dragging *{pointer-events:none}
+/* The film itself: sprocket holes top and bottom travel with the frames */
+.film{
+  display:inline-flex;gap:14px;padding:34px 14px 0;margin-right:var(--pad);
+  background-color:var(--film);border-radius:4px;
+  --holes:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='34'%3E%3Crect x='9' y='11' width='13' height='12' rx='2.5' fill='%23181712'/%3E%3C/svg%3E");
+  background-image:var(--holes),var(--holes);
+  background-repeat:repeat-x;background-position:0 0,0 100%;background-size:30px 34px;
+  padding-bottom:34px;
+}
+.frame{flex:none;display:flex;flex-direction:column;scroll-snap-align:start;scroll-margin-left:var(--pad)}
+.frame__clip{position:relative;height:var(--frame-h);border-radius:2px;overflow:hidden;background:#000;text-align:left}
+.frame--v .frame__clip{aspect-ratio:9/16}
+.frame--h .frame__clip{aspect-ratio:16/9}
+.frame__clip img,.frame__clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame__clip video{opacity:0;transition:opacity .35s}
+.frame__clip.is-previewing video{opacity:1}
+.frame__play{position:absolute;left:16px;bottom:16px;width:54px;height:54px;border-radius:50%;background:var(--red);display:grid;place-items:center;transform:scale(.85);opacity:.92;transition:transform .25s,background .2s}
+.frame__play svg{width:18px;height:18px;margin-left:3px}
+.frame__clip:hover .frame__play,.frame__clip:focus-visible .frame__play{transform:scale(1);background:var(--red-hot)}
+.frame__clip:focus-visible{outline-offset:-3px}
+/* Edge print: the caption sits on the film base like a film's edge code */
+.frame__edge{display:flex;justify-content:space-between;gap:12px;padding:12px 2px 6px;font-size:14px;line-height:1.3}
+.frame__edge b{font-weight:650}
+.frame__edge span{color:var(--mute);white-space:nowrap}
+.frame--v .frame__edge{max-width:calc(var(--frame-h) * 9 / 16);flex-direction:column;gap:2px}
+.frame--empty .frame__clip{background:var(--ink);border:1.5px dashed var(--ink-3);display:grid;place-items:center;color:var(--mute);font-size:15px;cursor:default}
+
+/* ---------- Firstake ---------- */
+.ft{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,90px);align-items:center;padding:clamp(90px,14vh,160px) var(--pad) 0}
+.ft__title{font-size:clamp(40px,6.4vw,96px)}
+.ft__role{margin-top:16px;color:var(--mute);font-size:15px}
+.ft__role strong{color:var(--paper);font-weight:600}
+.ft__copy{max-width:56ch;margin-top:20px}
+.ft__steps{list-style:none;counter-reset:s;margin:28px 0 32px;display:grid;gap:12px}
+.ft__steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;align-items:baseline}
+.ft__steps li::before{content:counter(s);font-weight:800;font-variation-settings:"wdth" 125;color:var(--red-hot)}
+.browser{border-radius:14px;background:#f6f5f2;color:#1c1b17;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);overflow:hidden;text-decoration:none;display:block;transition:transform .35s cubic-bezier(.2,.7,.1,1)}
+.browser:hover{transform:translateY(-6px) rotate(-.4deg)}
+.browser__bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#e9e7e1}
+.browser__bar i{width:10px;height:10px;border-radius:50%;background:#cfccc4}
+.browser__bar span{margin-left:12px;flex:1;padding:4px 12px;border-radius:6px;background:#f6f5f2;font-size:13px;color:#6b685f}
+.browser__body{padding:clamp(22px,4vw,40px)}
+.browser__h{font-size:clamp(22px,2.4vw,30px);font-weight:750;letter-spacing:-.01em}
+.browser__input{margin-top:18px;display:flex;align-items:center;gap:10px;border:1.5px solid #d6d3cb;border-radius:12px;padding:14px 14px 14px 16px;background:#fff;min-height:58px}
+.browser__input .typed{flex:1;font-size:16px}
+.browser__input .typed::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--red);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+.browser__send{padding:8px 14px;border-radius:8px;background:#1c1b17;color:#fff;font-size:14px;font-weight:600}
+.browser__picks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.browser__picks div{border:1.5px solid #e2dfd8;border-radius:10px;padding:10px 12px;font-size:13px;color:#6b685f;opacity:.35;transition:opacity .4s}
+.browser__picks b{display:block;color:#1c1b17;font-size:14px}
+.browser.is-answered .browser__picks div{opacity:1}
+.browser__note{margin-top:14px;font-size:13px;color:#6b685f}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:860px){.ft{grid-template-columns:1fr}}
+
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,90px);padding:clamp(90px,14vh,160px) var(--pad) 0;align-items:start}
+.about__photo{position:relative}
+.about__photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;background:var(--red);border-radius:3px}
+.about__photo img{position:relative;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:3px}
+.about__title{font-size:clamp(40px,6.4vw,96px)}
+.about__bio{max-width:60ch;margin-top:22px;display:grid;gap:14px;font-size:18px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line);font-size:16px}
+.facts dt{color:var(--mute)}
+.skills{margin-top:30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 28px}
+.skills h3{font-size:15px;font-weight:650;margin-bottom:8px;color:var(--red-hot);font-variation-settings:"wdth" 115}
+.skills ul{list-style:none;color:var(--mute);font-size:15px;line-height:1.75}
+.about{}@media (max-width:1100px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about__photo{max-width:420px}}
+
+/* ---------- Contact ---------- */
+.contact{padding:clamp(110px,16vh,180px) var(--pad) 40px}
+.contact__title{font-size:clamp(40px,8.6vw,136px)}
+.contact__mail{display:inline-block;margin-top:26px;font-size:clamp(20px,2.6vw,34px);font-weight:600;text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px;transition:color .2s}
+.contact__mail:hover{color:var(--red-hot)}
+.contact__links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:clamp(80px,12vh,140px);padding-top:22px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+.foot img{width:20px}
+
+/* ---------- Player ---------- */
+.player{margin:auto;padding:0;border:0;background:transparent;color:var(--paper);max-width:100vw;max-height:100vh;overflow:visible}
+.player::backdrop{background:rgba(14,13,10,.92);backdrop-filter:blur(6px)}
+.player[open]{display:flex;flex-direction:column;align-items:center;animation:pop .3s cubic-bezier(.2,.7,.1,1)}
+.player video{max-height:80vh;max-width:min(92vw,1400px);border-radius:4px;background:#000}
+.player__cap{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%;margin-top:14px;font-size:15px}
+.player__cap b{font-weight:650}
+.player__cap span{color:var(--mute)}
+.player__close{position:fixed;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s}
+.player__close:hover{background:var(--red);border-color:var(--red)}
+.player__close svg{width:18px;height:18px}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  #drawPath{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <a class="nav__home" href="#top"><img src="img/snake-red.png" alt=""><span>Zara Suvanto</span></a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#firstake">Firstake</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="hero__snake" aria-hidden="true">
+      <!-- The ZES snake, revealed by a thick stroke that travels from tail to head -->
+      <svg viewBox="0 0 720 832">
+        <defs>
+          <mask id="snakeMask" maskUnits="userSpaceOnUse" x="-100" y="-100" width="920" height="1032">
+            <path id="drawPath" d="M760,850 C640,740 420,745 210,778 C70,800 10,700 110,600 L560,215 C720,80 650,20 470,25 L300,30 C190,40 120,110 40,130 C10,150 30,260 60,330" fill="none" stroke="#fff" stroke-width="250" stroke-linecap="round" stroke-linejoin="round"/>
+          </mask>
+        </defs>
+        <image href="img/snake-red.png" width="720" height="832" mask="url(#snakeMask)"/>
+      </svg>
+    </div>
+    <div>
+      <h1 class="hero__name display"><span><i>Zara</i></span><span><i>Suvanto</i></span></h1>
+      <p class="hero__lede">Video editor and director. Founder of ZES&nbsp;Creative. <em>Television, Radio &amp; Film at Syracuse University’s Newhouse School.</em></p>
+      <div class="hero__actions">
+        <a class="btn btn--red" href="#work">Watch my work</a>
+        <a class="btn" href="files/Zara-Suvanto-Resume.pdf" target="_blank" rel="noopener">View resume</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="work">
+    <!-- Reels are built from the WORK list in the script at the bottom of the page -->
+  </div>
+
+  <section class="ft" id="firstake" aria-labelledby="ft-title">
+    <div>
+      <h2 class="ft__title display" id="ft-title">Firstake</h2>
+      <p class="ft__role"><strong>Creator and project team lead</strong>, United AI at Syracuse</p>
+      <p class="ft__copy">Firstake is an AI creative director. It tells people which AI tool to use for what they want to make, shows the best, cheapest and free options with checked prices, and writes a ready-to-paste prompt in that tool’s own language. I’m continuing to build it with guidance from Syracuse’s Blackstone LaunchPad and the iSchool, because AI is moving faster than most people can keep up with. Firstake saves students, creators and businesses hours of trial and error, and wasted money, by getting it right on the first take.</p>
+      <ol class="ft__steps">
+        <li>Describe what you want to make.</li>
+        <li>See the best, cheapest and free tools for it.</li>
+        <li>Copy a prompt written for that tool.</li>
+      </ol>
+      <a class="btn btn--red" href="https://firstake.vercel.app/" target="_blank" rel="noopener">Try Firstake</a>
+    </div>
+    <a class="browser" id="ftDemo" href="https://firstake.vercel.app/" target="_blank" rel="noopener" aria-label="Open Firstake in a new tab">
+      <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>firstake.vercel.app</span></div>
+      <div class="browser__body" aria-hidden="true">
+        <p class="browser__h">Your AI creative director</p>
+        <div class="browser__input"><span class="typed" id="ftTyped"></span><span class="browser__send">Send</span></div>
+        <div class="browser__picks">
+          <div><b>Best</b><span id="ftBest">Top quality pick</span></div>
+          <div><b>Cheapest</b><span>Lowest checked price</span></div>
+          <div><b>Free</b><span>No-cost option</span></div>
+        </div>
+        <p class="browser__note">Preview. Click to open the live app.</p>
+      </div>
+    </a>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about__photo"><img src="img/zara.jpg" alt="Portrait of Zara Suvanto" width="900" height="1197"></div>
+    <div>
+      <h2 class="about__title display" id="about-title">About</h2>
+      <div class="about__bio">
+        <p>I’m Zara, a Television, Radio &amp; Film student at Syracuse University’s Newhouse School with a minor in marketing. I edit and direct video: commercial spots, short-form for brands, and news.</p>
+        <p>This year I started ZES Creative, a production company making video and social content for local businesses in Westchester. I found my first clients by going door to door, and I take every project from shot list to delivery. Over the summer I cut commercial spots as an editing intern at Cardboard Spaceship, and for two years I reported and produced weekly packages for CitrusTV News.</p>
+        <p>I’m most at home in the edit, finding the rhythm that makes a 30-second spot land. I’m looking for internships in post-production and video.</p>
+      </div>
+      <dl class="facts">
+        <dt>School</dt><dd>Syracuse University, S.I. Newhouse School of Public Communications</dd>
+        <dt>Studying</dt><dd>B.S. Television, Radio &amp; Film, minor in Marketing</dd>
+        <dt>Graduating</dt><dd>2028, Dean’s List</dd>
+        <dt>Based in</dt><dd>Larchmont, NY and Syracuse, NY</dd>
+      </dl>
+      <div class="skills">
+        <div><h3>Editing</h3><ul><li>Adobe Premiere Pro</li><li>DaVinci Resolve</li><li>Final Cut Pro</li><li>Avid</li><li>MotionVFX</li><li>CapCut</li></ul></div>
+        <div><h3>Camera and field</h3><ul><li>Canon C70</li><li>Canon XF705</li><li>Sachtler tripod</li><li>Tascam DR-60D</li></ul></div>
+        <div><h3>Audio and design</h3><ul><li>Adobe Audition</li><li>GarageBand</li><li>Adobe InDesign</li><li>Canva</li></ul></div>
+        <div><h3>AI and social</h3><ul><li>Midjourney</li><li>Higgsfield AI</li><li>Instagram</li><li>TikTok</li><li>YouTube</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <h2 class="contact__title display" id="contact-title">Let’s work together</h2>
+    <a class="contact__mail" href="mailto:zesuvant@syr.edu">zesuvant@syr.edu</a>
+    <div class="contact__links">
+      <a class="btn" href="https://www.linkedin.com/in/zara-suvanto-0670a035a" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="files/Zara-Suvanto-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+    <footer class="foot">
+      <span>© 2026 Zara Suvanto</span>
+      <img src="img/snake-red.png" alt="ZES Creative">
+    </footer>
+  </section>
+</main>
+
+<dialog class="player" id="player" aria-label="Video player">
+  <button class="player__close" id="playerClose" aria-label="Close video">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+  <video id="playerVideo" controls playsinline></video>
+  <div class="player__cap"><b id="playerTitle"></b><span id="playerRole"></span></div>
+</dialog>
+
+<script>
+/* =========================================================
+   EDIT YOUR WORK HERE
+   - shape: "v" for vertical (9:16), "h" for horizontal (16:9)
+   - add a video by dropping the .mp4 in /videos and a poster
+     .jpg in /posters, then adding a line below.
+   - an entry with no "file" shows as an empty "coming soon" frame
+   ========================================================= */
+const WORK = [
+  {
+    id: "zes", title: "ZES Creative",
+    meta: [["Founder", "May 2026 to now"], ["", "Westchester, NY"]],
+    tag: "Dangerously good content.",
+    about: "The video production company I started to make short-form video and ads for local businesses. I direct, shoot and edit every project, and build the social strategy and content calendar around it.",
+    items: [
+      { file: "zes-23-holly-place", title: "23 Holly Place", role: "Shot and edited", shape: "v" },
+      { file: "zes-elka-intro", title: "Meet Elka", role: "Shot and edited", shape: "v" },
+      { file: "zes-pricing-a-house", title: "Pricing a house", role: "Shot and edited", shape: "v" },
+      { file: "zes-vitality-booth", title: "Vitality Booth", role: "Shot and edited", shape: "v" },
+      { file: "zes-airport-bts", title: "Airport, with behind the scenes", role: "Shot and edited", shape: "v" }
+    ]
+  },
+  {
+    id: "cardboard", title: "Cardboard Spaceship",
+    meta: [["Video editor intern", "Summer 2026"]],
+    about: "Commercial spots and spec ads of different lengths, cut in Premiere Pro with MotionVFX, working directly with the Head of Production.",
+    items: [
+      { file: "cs-spotify-spec", title: "Spotify spec ad", role: "Editor", shape: "h" },
+      { file: "cs-tyr-spec", title: "TYR Sport spec ad", role: "Editor", shape: "h" },
+      { file: "cs-dog-in-spain", title: "Dog in Spain", role: "Editor", shape: "h" },
+      { file: "cs-summer-time", title: "Summer time", role: "Editor", shape: "h" }
+    ]
+  },
+  {
+    id: "citrustv", title: "CitrusTV News",
+    meta: [["Reporter and crew", "2024 to 2026"]],
+    about: "Weekly 1:30 packages for News Live at 6. I pitched the stories, wrote the scripts, built the graphics in ENPS and edited in Avid.",
+    items: [
+      { title: "Package coming soon", shape: "h" },
+      { title: "Package coming soon", shape: "h" },
+      { title: "Package coming soon", shape: "h" }
+    ]
+  }
+];
+
+const icon = {
+  play: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg>',
+  prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const workEl = document.getElementById("work");
+WORK.forEach(sec => {
+  const meta = sec.meta.map(([a, b]) => `<span>${a ? `<strong>${esc(a)}</strong> ` : ""}${esc(b)}</span>`).join("");
+  const frames = sec.items.map(it => {
+    const cls = `frame frame--${it.shape}${it.file ? "" : " frame--empty"}`;
+    if (!it.file) {
+      return `<div class="${cls}"><div class="frame__clip">${esc(it.title)}</div><div class="frame__edge"><b>&nbsp;</b></div></div>`;
+    }
+    return `<div class="${cls}">
+      <button class="frame__clip" data-file="${it.file}" data-title="${esc(it.title)}" data-role="${esc(it.role || "")}" aria-label="Play ${esc(it.title)}">
+        <img src="posters/${it.file}.jpg" alt="" loading="lazy">
+        <video muted loop playsinline preload="none" data-src="videos/${it.file}.mp4"></video>
+        <span class="frame__play" aria-hidden="true">${icon.play}</span>
+      </button>
+      <div class="frame__edge"><b>${esc(it.title)}</b><span>${esc(it.role || "")}</span></div>
+    </div>`;
+  }).join("");
+  workEl.insertAdjacentHTML("beforeend", `
+    <section class="reel" id="${sec.id}" aria-labelledby="${sec.id}-t">
+      <div class="reel__head">
+        <div>
+          <h2 class="reel__title display" id="${sec.id}-t">${esc(sec.title)}</h2>
+          <div class="reel__meta">${meta}${sec.tag ? `<span class="reel__tag">${esc(sec.tag)}</span>` : ""}</div>
+          <p class="reel__about">${esc(sec.about)}</p>
+        </div>
+        <div class="reel__nav">
+          <button class="arrow" data-dir="-1" aria-label="Scroll ${esc(sec.title)} left">${icon.prev}</button>
+          <button class="arrow" data-dir="1" aria-label="Scroll ${esc(sec.title)} right">${icon.next}</button>
+        </div>
+      </div>
+      <div class="strip" tabindex="0" role="region" aria-label="${esc(sec.title)} videos"><div class="film">${frames}</div></div>
+    </section>`);
+});
+
+/* Strips: arrow buttons, drag to scroll, button state */
+document.querySelectorAll(".reel").forEach(reel => {
+  const strip = reel.querySelector(".strip");
+  const [prev, next] = reel.querySelectorAll(".arrow");
+  const update = () => {
+    prev.disabled = strip.scrollLeft < 4;
+    next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
+  };
+  [prev, next].forEach(b => b.addEventListener("click", () =>
+    strip.scrollBy({ left: b.dataset.dir * strip.clientWidth * 0.75, behavior: "smooth" })));
+  strip.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+
+  let down = false, startX = 0, startLeft = 0, moved = false;
+  strip.addEventListener("pointerdown", e => {
+    if (e.pointerType !== "mouse") return;
+    down = true; moved = false; startX = e.clientX; startLeft = strip.scrollLeft;
+  });
+  window.addEventListener("pointermove", e => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) > 6) { moved = true; strip.classList.add("is-dragging"); }
+    if (moved) strip.scrollLeft = startLeft - dx;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!down) return;
+    down = false;
+    if (moved) {
+      strip.addEventListener("click", e => { e.stopPropagation(); e.preventDefault(); }, { capture: true, once: true });
+      requestAnimationFrame(() => strip.classList.remove("is-dragging"));
+    }
+  });
+});
+
+/* Hover preview (mouse only) */
+const canHover = matchMedia("(hover:hover) and (pointer:fine)").matches;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (canHover && !reduce) {
+  document.querySelectorAll(".frame__clip[data-file]").forEach(clip => {
+    const v = clip.querySelector("video");
+    let t;
+    clip.addEventListener("mouseenter", () => {
+      t = setTimeout(() => {
+        if (!v.src) v.src = v.dataset.src;
+        v.currentTime = 0;
+        v.play().then(() => clip.classList.add("is-previewing")).catch(() => {});
+      }, 180);
+    });
+    clip.addEventListener("mouseleave", () => {
+      clearTimeout(t); clip.classList.remove("is-previewing"); v.pause();
+    });
+  });
+}
+
+/* Full player */
+const player = document.getElementById("player");
+const pv = document.getElementById("playerVideo");
+let lastClip = null;
+document.addEventListener("click", e => {
+  const clip = e.target.closest(".frame__clip[data-file]");
+  if (!clip) return;
+  lastClip = clip;
+  pv.src = `videos/${clip.dataset.file}.mp4`;
+  pv.poster = `posters/${clip.dataset.file}.jpg`;
+  document.getElementById("playerTitle").textContent = clip.dataset.title;
+  document.getElementById("playerRole").textContent = clip.dataset.role;
+  player.showModal();
+  pv.play().catch(() => {});
+});
+const closePlayer = () => player.close();
+document.getElementById("playerClose").addEventListener("click", closePlayer);
+player.addEventListener("click", e => { if (e.target === player) closePlayer(); });
+player.addEventListener("close", () => { pv.pause(); pv.removeAttribute("src"); pv.load(); lastClip && lastClip.focus(); });
+
+/* Firstake preview: types example requests */
+(() => {
+  const el = document.getElementById("ftTyped"), demo = document.getElementById("ftDemo"), best = document.getElementById("ftBest");
+  const asks = [
+    ["A 30-second ad for a local coffee shop", "Video generator"],
+    ["Cover art for my podcast", "Image generator"],
+    ["A website for my photography", "Website builder"],
+    ["Background music for a reel", "Music tool"]
+  ];
+  if (reduce) { el.textContent = asks[0][0]; demo.classList.add("is-answered"); best.textContent = asks[0][1]; return; }
+  let i = 0;
+  const run = async () => {
+    const [text, pick] = asks[i % asks.length];
+    demo.classList.remove("is-answered"); el.textContent = "";
+    for (const ch of text) { el.textContent += ch; await new Promise(r => setTimeout(r, 45)); }
+    await new Promise(r => setTimeout(r, 500));
+    best.textContent = pick; demo.classList.add("is-answered");
+    await new Promise(r => setTimeout(r, 2600));
+    i++; run();
+  };
+  new IntersectionObserver((ents, obs) => { if (ents[0].isIntersecting) { obs.disconnect(); run(); } }, { threshold: .3 }).observe(demo);
+})();
+
+/* Highlight current section in nav */
+const links = [...document.querySelectorAll(".nav ul a")];
+const targets = links.map(a => document.querySelector(a.getAttribute("href")));
+const navObs = new IntersectionObserver(ents => {
+  ents.forEach(en => {
+    if (en.isIntersecting) links.forEach((a, k) => a.setAttribute("aria-current", targets[k] === en.target));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+targets.forEach(t => t && navObs.observe(t));
+</script>
+</body>
+</html>
