@@ -52,9 +52,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* full-screen reel behind the name, revealed by the strike */
 .hero__bg{position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity 1.1s ease}
 .hero__bg video,.hero__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-@media (min-aspect-ratio:1/1){.hero__bg video{object-position:0% 50%}} /* keep the credit captions (bottom-left) in frame */
-.hero__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(24,23,18,.62) 0%,rgba(24,23,18,.72) 55%,rgba(24,23,18,.9) 100%),linear-gradient(to bottom,rgba(24,23,18,.35),rgba(24,23,18,0) 25%,rgba(24,23,18,0) 70%,var(--ink))}
+@media (min-aspect-ratio:1/1){.hero__bg video{object-position:0% 100%}} /* keep the credit captions (bottom-left) in frame */
+.hero__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 62% 58% at 50% 50%,rgba(24,23,18,.66) 0%,rgba(24,23,18,.5) 60%,rgba(24,23,18,.28) 100%),linear-gradient(to bottom,rgba(24,23,18,.45),rgba(24,23,18,0) 18%)}
 .js .hero.is-struck .hero__bg,.js .hero.is-done .hero__bg,html:not(.js) .hero__bg{opacity:1}
+.hero__credit{position:absolute;left:16px;bottom:18px;z-index:1;font:700 16px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#f6f4ef;text-shadow:0 1px 8px rgba(0,0,0,.5);opacity:0;transition:opacity .3s}
+.hero__credit.is-on{opacity:1}
 .hero__name,.hero__lede{text-shadow:0 2px 24px rgba(0,0,0,.4)}
 .hero__title{color:#ea3b3e;text-shadow:0 1px 14px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,.6)}
 .hero__lede{color:#cfcac0}
@@ -221,6 +223,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <header class="hero" id="hero">
     <div class="hero__bg" aria-hidden="true">
       <video id="reel" muted loop playsinline preload="none"></video>
+      <span class="hero__credit" id="credit"></span>
     </div>
     <div class="stage">
       <video class="stage__snake" id="snake" src="img/snake-intro.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
@@ -336,6 +339,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    ========================================================= */
 const WORK = [
   {
+    id: "cardboard", title: "Cardboard Spaceship", grid: "h2",
+    meta: [["Video editor intern", "Summer 2026"]],
+    about: "Commercial spots and spec ads of different lengths, cut in Premiere Pro with MotionVFX, working directly with the Head of Production.",
+    items: [
+      { file: "cs-spotify-spec", title: "Spotify spec ad", role: "Editor", shape: "h", secs: 25 },
+      { file: "cs-tyr-spec", title: "TYR Sport spec ad", role: "Editor", shape: "h", secs: 26 },
+      { file: "cs-dog-in-spain", title: "Dog in Spain", role: "Editor", shape: "h", secs: 29 },
+      { file: "cs-summer-time", title: "Summer time", role: "Editor", shape: "h", secs: 31 }
+    ]
+  },
+  {
     id: "zes", title: "ZES Creative", grid: "v",
     meta: [["Founder", "May 2026 to now"], ["", "Westchester, NY"]],
     tag: "Dangerously good content.",
@@ -346,17 +360,6 @@ const WORK = [
       { file: "zes-pricing-a-house", title: "Pricing a house", role: "Shot and edited", shape: "v", secs: 40 },
       { file: "zes-vitality-booth", title: "Vitality Booth", role: "Shot and edited", shape: "v", secs: 32 },
       { file: "zes-airport-bts", title: "Airport, with behind the scenes", role: "Shot and edited", shape: "v", secs: 36 }
-    ]
-  },
-  {
-    id: "cardboard", title: "Cardboard Spaceship", grid: "h2",
-    meta: [["Video editor intern", "Summer 2026"]],
-    about: "Commercial spots and spec ads of different lengths, cut in Premiere Pro with MotionVFX, working directly with the Head of Production.",
-    items: [
-      { file: "cs-spotify-spec", title: "Spotify spec ad", role: "Editor", shape: "h", secs: 25 },
-      { file: "cs-tyr-spec", title: "TYR Sport spec ad", role: "Editor", shape: "h", secs: 26 },
-      { file: "cs-dog-in-spain", title: "Dog in Spain", role: "Editor", shape: "h", secs: 29 },
-      { file: "cs-summer-time", title: "Summer time", role: "Editor", shape: "h", secs: 31 }
     ]
   },
   {
@@ -375,7 +378,10 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const playIcon = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg>';
 
-/* ---------- Intro ---------- */
+/* ---------- Intro (plays on every load) ---------- */
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+scrollTo(0, 0);
 (() => {
   const hero = document.getElementById("hero");
   const name = document.getElementById("name");
@@ -402,6 +408,17 @@ const playIcon = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"
   reel.poster = portrait ? "img/reel-poster-mobile.jpg" : "img/reel-poster.jpg";
   reel.src = portrait ? "videos/reel-mobile.mp4" : (px > 2200 ? "videos/reel-2160.mp4" : "videos/reel-1080.mp4");
   reel.preload = "auto";
+  // Phones crop out the credits burned into the reel, so show them as text, in sync
+  if (portrait) {
+    const credit = document.getElementById("credit");
+    const CREDITS = [[0, "The Moonrise Cartel"], [5.5, "Cardboard Spaceship"], [13.375, "ZES Creative Client"]];
+    reel.addEventListener("timeupdate", () => {
+      const t = reel.currentTime; let txt = CREDITS[0][1];
+      CREDITS.forEach(([at, name]) => { if (t >= at) txt = name; });
+      if (credit.textContent !== txt) credit.textContent = txt;
+      credit.classList.add("is-on");
+    });
+  }
   const startReel = () => { if (!reduce) reel.play().catch(() => {}); };
   // Pause the reel while the hero is off screen
   new IntersectionObserver(([en]) => {
@@ -435,7 +452,7 @@ const playIcon = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"
   };
   skip.addEventListener("click", () => finish(true));
 
-  if (reduce || location.hash) { finish(true); return; }
+  if (reduce) { finish(true); return; }
 
   snake.addEventListener("ended", () => finish(false));
   const started = snake.play();
@@ -473,7 +490,7 @@ WORK.forEach(sec => {
         </div>
       </div>
       <div class="grid grid--${sec.grid}">${clips}</div>
-      ${sec.id === "zes" ? '<p class="scrub-hint">Move across a video to scrub through it. Click to watch.</p>' : ""}
+      ${sec.id === "cardboard" ? '<p class="scrub-hint">Move across a video to scrub through it. Click to watch.</p>' : ""}
     </section>`);
 });
 
@@ -481,7 +498,7 @@ WORK.forEach(sec => {
 if (matchMedia("(hover:hover) and (pointer:fine)").matches) {
   const FRAMES = 20;
   const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-  document.querySelectorAll(".clip__screen[data-file]").forEach(scr => {
+  document.querySelectorAll("#cardboard .clip__screen[data-file]").forEach(scr => {
     const strip = scr.querySelector(".clip__scrub"), bar = scr.querySelector(".clip__bar i"), head = scr.querySelector(".clip__bar b"), tc = scr.querySelector(".clip__tc");
     const secs = +scr.dataset.secs;
     let loaded = false;
