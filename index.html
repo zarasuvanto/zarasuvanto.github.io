@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zara Suvanto | Video Editor & Director</title>
-<meta name="description" content="Portfolio of Zara Suvanto, video editor and director, founder of ZES Creative, Syracuse University Newhouse School.">
-<meta property="og:title" content="Zara Suvanto | Video Editor & Director">
+<title>Zara Suvanto | Multimedia Creative</title>
+<meta name="description" content="Portfolio of Zara Suvanto, multimedia creative and founder of ZES Creative. Syracuse University, Newhouse School.">
+<meta property="og:title" content="Zara Suvanto | Multimedia Creative">
 <meta property="og:description" content="Commercial spots, short-form for brands, and news packages. Founder of ZES Creative.">
 <meta property="og:image" content="img/favicon.png">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root{
   --ink:#181712;        /* ZES black */
-  --film:#24211c;       /* film base */
+  --ink-2:#211f1a;
   --ink-3:#2f2b25;
   --red:#b82225;        /* ZES red */
   --red-hot:#d22a2d;
   --paper:#f4f2ed;
   --mute:#9a958a;
   --line:rgba(244,242,237,.12);
-  --frame-h:clamp(260px,50vh,500px);
   --pad:clamp(20px,5vw,72px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -32,13 +32,13 @@ img,video{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--red-hot);outline-offset:3px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Display type: expanded Archivo, echoing the ZES wordmark */
 .display{font-variation-settings:"wdth" 125;font-weight:850;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
 
 /* ---------- Nav ---------- */
-.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);background:linear-gradient(var(--ink) 30%,rgba(24,23,18,0));transition:transform .3s}
+.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);background:linear-gradient(var(--ink) 30%,rgba(24,23,18,0));transition:opacity .6s}
+.js body:not(.intro-done) .nav{opacity:0;pointer-events:none}
 .nav__home{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-variation-settings:"wdth" 115;letter-spacing:.01em}
 .nav__home img{width:22px;height:auto}
 .nav ul{display:flex;gap:clamp(14px,3vw,36px);list-style:none}
@@ -46,78 +46,81 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--paper)}
 @media (max-width:640px){.nav__home span{display:none}.nav ul{gap:16px}.nav ul a{font-size:14px}}
 
-/* ---------- Hero ---------- */
-.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(24px,5vw,80px);padding:110px var(--pad) 70px}
-.hero__snake{width:100%;max-width:420px;justify-self:end}
-.hero__snake svg{width:100%;height:auto;overflow:visible}
-.hero__name{font-size:clamp(48px,9.4vw,150px)}
-.hero__name span{display:block;overflow:hidden}
-.hero__name span i{display:block;font-style:normal;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.7,.1,1) forwards}
-.hero__name span:nth-child(1) i{animation-delay:1.7s}
-.hero__name span:nth-child(2) i{animation-delay:1.85s}
-.hero__lede{max-width:34ch;margin-top:28px;font-size:clamp(17px,1.5vw,21px);color:var(--paper);opacity:0;animation:fade .8s 2.3s forwards}
-.hero__lede em{font-style:normal;color:var(--mute)}
-.hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;opacity:0;animation:fade .8s 2.45s forwards}
+/* ---------- Hero: the ZES snake strikes, its swipe reveals the name ---------- */
+.hero{min-height:100svh;display:grid;place-items:center;padding:96px var(--pad) 64px;position:relative;overflow:hidden;overflow:clip}
+.stage{display:grid;place-items:center;width:100%;max-width:1200px}
+.stage > *{grid-area:1/1}
+.stage__snake{width:min(640px,94vw);aspect-ratio:720/436;mix-blend-mode:lighten;pointer-events:none;transition:opacity .08s;-webkit-mask-image:linear-gradient(to top,transparent,#000 9%),linear-gradient(to right,transparent,#000 7%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to top,transparent,#000 9%),linear-gradient(to right,transparent,#000 7%);mask-composite:intersect}
+.hero__copy{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.hero__name{position:relative;display:inline-block;white-space:nowrap;font-size:120px}
+.hero__name .name-wrap{display:inline-block}
+.hero__title{margin-top:.55em;font-size:clamp(19px,2.3vw,30px);font-weight:650;font-variation-settings:"wdth" 125;color:var(--red-hot);letter-spacing:.005em}
+.hero__lede{max-width:46ch;margin-top:14px;color:var(--mute);font-size:clamp(16px,1.3vw,18px)}
+.hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+.hero__skip{position:absolute;right:var(--pad);bottom:28px;font-size:14px;color:var(--mute);transition:opacity .3s}
+.hero__skip:hover{color:var(--paper)}
+/* the swoosh: same tapered red stroke that wipes in the tagline in the ZES video */
+.swipe{position:absolute;left:0;top:52%;width:60%;height:1.25em;transform:translate(-100%,-50%);pointer-events:none;opacity:0}
+.swipe svg{width:100%;height:100%;display:block}
+
+/* intro states (only with JS; without it everything simply shows) */
+.js .hero .hero__name > .name-wrap{clip-path:inset(0 100% 0 0)}
+.js .hero .hero__title,.js .hero .hero__lede,.js .hero .hero__actions{opacity:0;transform:translateY(10px)}
+.js .hero.is-struck .stage__snake{opacity:0}
+.js .hero.is-done .hero__title,.js .hero.is-done .hero__lede,.js .hero.is-done .hero__actions{opacity:1;transform:none;transition:opacity .5s,transform .5s}
+.js .hero.is-done .hero__lede{transition-delay:.08s}
+.js .hero.is-done .hero__actions{transition-delay:.16s}
+.js .hero.is-done .hero__skip{opacity:0;pointer-events:none}
+.js .hero.is-done .hero__name > .name-wrap{clip-path:none}
+.js .hero.is-done .stage__snake{display:none}
+.hero:not(.is-done) .hero__copy{pointer-events:none}
+
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid var(--paper);transition:background .2s,color .2s,border-color .2s}
 .btn:hover{background:var(--paper);color:var(--ink)}
 .btn--red{background:var(--red);border-color:var(--red);color:#fff}
 .btn--red:hover{background:var(--red-hot);border-color:var(--red-hot);color:#fff}
-.btn svg{width:16px;height:16px}
-@keyframes rise{to{transform:none}}
-@keyframes fade{to{opacity:1}}
-#drawPath{stroke-dasharray:3000;stroke-dashoffset:3000;animation:draw 1.7s cubic-bezier(.55,.1,.3,1) .2s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-@media (max-width:760px){
-  .hero{grid-template-columns:1fr;align-content:center;padding-top:96px}
-  .hero__snake{max-width:150px;justify-self:start}
-}
 
-/* ---------- Reels (film strips) ---------- */
-.reel{padding:clamp(70px,11vh,130px) 0 0}
-.reel__head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:20px 40px;padding:0 var(--pad) 28px}
-.reel__title{font-size:clamp(36px,6.4vw,96px)}
-.reel__meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin-top:18px;color:var(--mute);font-size:15px}
-.reel__meta strong{color:var(--paper);font-weight:600}
-.reel__about{max-width:62ch;margin-top:10px;font-size:17px}
-.reel__tag{color:var(--red-hot);font-weight:700;font-variation-settings:"wdth" 115}
-.reel__nav{display:flex;gap:10px}
-.arrow{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s,border-color .2s,opacity .2s}
-.arrow:hover:not(:disabled){background:var(--red);border-color:var(--red)}
-.arrow:disabled{opacity:.3;cursor:default}
-.arrow svg{width:20px;height:20px}
-@media (max-width:640px){.reel__head{grid-template-columns:1fr}.reel__nav{display:none}}
+/* ---------- Chapters ---------- */
+.chapter{padding:clamp(90px,14vh,150px) var(--pad) 0}
+.chapter__head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px 56px;align-items:end;margin-bottom:34px}
+.chapter__title{font-size:clamp(36px,6.2vw,92px)}
+.chapter__meta{display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--mute);font-size:15px;margin-bottom:8px}
+.chapter__meta strong{color:var(--paper);font-weight:600}
+.chapter__tag{color:var(--red-hot);font-weight:700;font-variation-settings:"wdth" 115}
+.chapter__about{max-width:56ch}
+@media (max-width:860px){.chapter__head{grid-template-columns:1fr}}
 
-.strip{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding-left:var(--pad)}
-.strip::-webkit-scrollbar{display:none}
-.strip.is-dragging{cursor:grabbing;scroll-snap-type:none}
-.strip.is-dragging *{pointer-events:none}
-/* The film itself: sprocket holes top and bottom travel with the frames */
-.film{
-  display:inline-flex;gap:14px;padding:34px 14px 0;margin-right:var(--pad);
-  background-color:var(--film);border-radius:4px;
-  --holes:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='34'%3E%3Crect x='9' y='11' width='13' height='12' rx='2.5' fill='%23181712'/%3E%3C/svg%3E");
-  background-image:var(--holes),var(--holes);
-  background-repeat:repeat-x;background-position:0 0,0 100%;background-size:30px 34px;
-  padding-bottom:34px;
-}
-.frame{flex:none;display:flex;flex-direction:column;scroll-snap-align:start;scroll-margin-left:var(--pad)}
-.frame__clip{position:relative;height:var(--frame-h);border-radius:2px;overflow:hidden;background:#000;text-align:left}
-.frame--v .frame__clip{aspect-ratio:9/16}
-.frame--h .frame__clip{aspect-ratio:16/9}
-.frame__clip img,.frame__clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.frame__clip video{opacity:0;transition:opacity .35s}
-.frame__clip.is-previewing video{opacity:1}
-.frame__play{position:absolute;left:16px;bottom:16px;width:54px;height:54px;border-radius:50%;background:var(--red);display:grid;place-items:center;transform:scale(.85);opacity:.92;transition:transform .25s,background .2s}
-.frame__play svg{width:18px;height:18px;margin-left:3px}
-.frame__clip:hover .frame__play,.frame__clip:focus-visible .frame__play{transform:scale(1);background:var(--red-hot)}
-.frame__clip:focus-visible{outline-offset:-3px}
-/* Edge print: the caption sits on the film base like a film's edge code */
-.frame__edge{display:flex;justify-content:space-between;gap:12px;padding:12px 2px 6px;font-size:14px;line-height:1.3}
-.frame__edge b{font-weight:650}
-.frame__edge span{color:var(--mute);white-space:nowrap}
-.frame--v .frame__edge{max-width:calc(var(--frame-h) * 9 / 16);flex-direction:column;gap:2px}
-.frame--empty .frame__clip{background:var(--ink);border:1.5px dashed var(--ink-3);display:grid;place-items:center;color:var(--mute);font-size:15px;cursor:default}
+.grid{display:grid;gap:clamp(14px,1.6vw,22px)}
+.grid--v{grid-template-columns:repeat(5,minmax(0,1fr))}
+.grid--h2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid--h3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.grid--v{grid-template-columns:repeat(3,minmax(0,1fr))}.grid--h3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid--v{grid-template-columns:repeat(2,minmax(0,1fr))}.grid--h2,.grid--h3{grid-template-columns:1fr}}
 
+.clip{display:flex;flex-direction:column;gap:10px;min-width:0}
+.clip__screen{position:relative;display:block;width:100%;border-radius:4px;overflow:hidden;background:#000;text-align:left}
+.clip--v .clip__screen{aspect-ratio:9/16}
+.clip--h .clip__screen{aspect-ratio:16/9}
+.clip__screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+/* hover-to-scrub: a strip of 20 frames, positioned by the cursor */
+.clip__scrub{position:absolute;inset:0;background-repeat:no-repeat;background-size:2000% 100%;opacity:0}
+.clip__screen.is-scrubbing .clip__scrub{opacity:1}
+.clip__bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(0,0,0,.45);opacity:0;transition:opacity .2s}
+.clip__bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red-hot)}
+.clip__bar b{position:absolute;top:-7px;width:2px;height:18px;background:#fff;left:0;transform:translateX(-1px)}
+.clip__tc{position:absolute;left:10px;bottom:14px;padding:3px 7px;border-radius:4px;background:rgba(14,13,10,.72);font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:.02em;opacity:0;transition:opacity .2s}
+.clip__screen.is-scrubbing .clip__bar,.clip__screen.is-scrubbing .clip__tc{opacity:1}
+.clip__play{position:absolute;right:12px;bottom:14px;width:46px;height:46px;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:transform .25s,background .2s}
+.clip__play svg{width:16px;height:16px;margin-left:3px}
+.clip__screen:hover .clip__play,.clip__screen:focus-visible .clip__play{background:var(--red-hot);transform:scale(1.06)}
+.clip__screen:focus-visible{outline-offset:2px}
+.clip__cap b{display:block;font-weight:650;line-height:1.3}
+.clip__cap span{color:var(--mute);font-size:14px}
+.clip--empty .clip__screen{background:var(--ink-2);border:1.5px dashed var(--ink-3);display:grid;place-items:center;color:var(--mute);font-size:15px;cursor:default}
+.scrub-hint{margin-top:16px;color:var(--mute);font-size:14px}
+@media (hover:none){.scrub-hint{display:none}}
+</style>
+<style>
 /* ---------- Firstake ---------- */
 .ft{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,90px);align-items:center;padding:clamp(90px,14vh,160px) var(--pad) 0}
 .ft__title{font-size:clamp(40px,6.4vw,96px)}
@@ -183,53 +186,51 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .player__close svg{width:18px;height:18px}
 @keyframes pop{from{opacity:0;transform:scale(.97)}}
 
+
+/* ---------- Player ---------- */
+.player{margin:auto;padding:0;border:0;background:transparent;color:var(--paper);max-width:100vw;max-height:100vh;overflow:visible}
+.player::backdrop{background:rgba(14,13,10,.92);backdrop-filter:blur(6px)}
+.player[open]{display:flex;flex-direction:column;align-items:center;animation:pop .3s cubic-bezier(.2,.7,.1,1)}
+.player video{max-height:80vh;max-width:min(92vw,1400px);border-radius:4px;background:#000}
+.player__cap{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%;margin-top:14px;font-size:15px}
+.player__cap b{font-weight:650}
+.player__cap span{color:var(--mute)}
+.player__close{position:fixed;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s}
+.player__close:hover{background:var(--red);border-color:var(--red)}
+.player__close svg{width:18px;height:18px}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
-  #drawPath{stroke-dashoffset:0}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" aria-label="Main">
-  <a class="nav__home" href="#top"><img src="img/snake-red.png" alt=""><span>Zara Suvanto</span></a>
-  <ul>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#firstake">Firstake</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
 <main id="top">
-  <header class="hero">
-    <div class="hero__snake" aria-hidden="true">
-      <!-- The ZES snake, revealed by a thick stroke that travels from tail to head -->
-      <svg viewBox="0 0 720 832">
-        <defs>
-          <mask id="snakeMask" maskUnits="userSpaceOnUse" x="-100" y="-100" width="920" height="1032">
-            <path id="drawPath" d="M760,850 C640,740 420,745 210,778 C70,800 10,700 110,600 L560,215 C720,80 650,20 470,25 L300,30 C190,40 120,110 40,130 C10,150 30,260 60,330" fill="none" stroke="#fff" stroke-width="250" stroke-linecap="round" stroke-linejoin="round"/>
-          </mask>
-        </defs>
-        <image href="img/snake-red.png" width="720" height="832" mask="url(#snakeMask)"/>
-      </svg>
-    </div>
-    <div>
-      <h1 class="hero__name display"><span><i>Zara</i></span><span><i>Suvanto</i></span></h1>
-      <p class="hero__lede">Video editor and director. Founder of ZES&nbsp;Creative. <em>Television, Radio &amp; Film at Syracuse University’s Newhouse School.</em></p>
-      <div class="hero__actions">
-        <a class="btn btn--red" href="#work">Watch my work</a>
-        <a class="btn" href="files/Zara-Suvanto-Resume.pdf" target="_blank" rel="noopener">View resume</a>
+  <header class="hero" id="hero">
+    <div class="stage">
+      <video class="stage__snake" id="snake" src="img/snake-intro.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+      <div class="hero__copy">
+        <h1 class="hero__name display" id="name">
+          <span class="name-wrap"><span>Zara</span><span class="sp"> </span><span>Suvanto</span></span>
+          <span class="swipe" aria-hidden="true"><svg viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M0,100 C280,66 600,30 1000,22 L1000,78 C640,70 330,92 0,112 Z" fill="#b82225"/></svg></span>
+        </h1>
+        <p class="hero__title">Multimedia Creative</p>
+        <p class="hero__lede">Founder of ZES Creative. Television, Radio &amp; Film at Syracuse University’s Newhouse School.</p>
+        <div class="hero__actions">
+          <a class="btn btn--red" href="#work">Watch my work</a>
+          <a class="btn" href="files/Zara-Suvanto-Resume.pdf" target="_blank" rel="noopener">View resume</a>
+        </div>
       </div>
     </div>
+    <button class="hero__skip" id="skip">Skip intro</button>
   </header>
 
-  <div id="work">
-    <!-- Reels are built from the WORK list in the script at the bottom of the page -->
-  </div>
+  <div id="work"><!-- chapters are built from the WORK list in the script below --></div>
 
-  <section class="ft" id="firstake" aria-labelledby="ft-title">
+<section class="ft" id="firstake" aria-labelledby="ft-title">
     <div>
       <h2 class="ft__title display" id="ft-title">Firstake</h2>
       <p class="ft__role"><strong>Creator and project team lead</strong>, United AI at Syracuse</p>
@@ -261,7 +262,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div>
       <h2 class="about__title display" id="about-title">About</h2>
       <div class="about__bio">
-        <p>I’m Zara, a Television, Radio &amp; Film student at Syracuse University’s Newhouse School with a minor in marketing. I edit and direct video: commercial spots, short-form for brands, and news.</p>
+        <p>I’m Zara Suvanto, a multimedia creative and a Television, Radio &amp; Film student at Syracuse University’s Newhouse School, with a minor in marketing. I shoot, edit and direct video, run social strategy, report news and build creative tools.</p>
         <p>This year I started ZES Creative, a production company making video and social content for local businesses in Westchester. I found my first clients by going door to door, and I take every project from shot list to delivery. Over the summer I cut commercial spots as an editing intern at Cardboard Spaceship, and for two years I reported and produced weekly packages for CitrusTV News.</p>
         <p>I’m most at home in the edit, finding the rhythm that makes a 30-second spot land. I’m looking for internships in post-production and video.</p>
       </div>
@@ -292,7 +293,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <img src="img/snake-red.png" alt="ZES Creative">
     </footer>
   </section>
+
 </main>
+
+<nav class="nav" aria-label="Main">
+  <a class="nav__home" href="#top"><img src="img/snake-red.png" alt=""><span>Zara Suvanto</span></a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#firstake">Firstake</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
 <dialog class="player" id="player" aria-label="Video player">
   <button class="player__close" id="playerClose" aria-label="Close video">
@@ -305,38 +317,38 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <script>
 /* =========================================================
    EDIT YOUR WORK HERE
-   - shape: "v" for vertical (9:16), "h" for horizontal (16:9)
-   - add a video by dropping the .mp4 in /videos and a poster
-     .jpg in /posters, then adding a line below.
+   - shape: "v" vertical (9:16) or "h" horizontal (16:9)
+   - each video needs: videos/NAME.mp4, posters/NAME.jpg, sprites/NAME.jpg
+   - "secs" is the length, used for the scrub timecode
    - an entry with no "file" shows as an empty "coming soon" frame
    ========================================================= */
 const WORK = [
   {
-    id: "zes", title: "ZES Creative",
+    id: "zes", title: "ZES Creative", grid: "v",
     meta: [["Founder", "May 2026 to now"], ["", "Westchester, NY"]],
     tag: "Dangerously good content.",
     about: "The video production company I started to make short-form video and ads for local businesses. I direct, shoot and edit every project, and build the social strategy and content calendar around it.",
     items: [
-      { file: "zes-23-holly-place", title: "23 Holly Place", role: "Shot and edited", shape: "v" },
-      { file: "zes-elka-intro", title: "Meet Elka", role: "Shot and edited", shape: "v" },
-      { file: "zes-pricing-a-house", title: "Pricing a house", role: "Shot and edited", shape: "v" },
-      { file: "zes-vitality-booth", title: "Vitality Booth", role: "Shot and edited", shape: "v" },
-      { file: "zes-airport-bts", title: "Airport, with behind the scenes", role: "Shot and edited", shape: "v" }
+      { file: "zes-23-holly-place", title: "23 Holly Place", role: "Shot and edited", shape: "v", secs: 46 },
+      { file: "zes-elka-intro", title: "Meet Elka", role: "Shot and edited", shape: "v", secs: 50 },
+      { file: "zes-pricing-a-house", title: "Pricing a house", role: "Shot and edited", shape: "v", secs: 40 },
+      { file: "zes-vitality-booth", title: "Vitality Booth", role: "Shot and edited", shape: "v", secs: 32 },
+      { file: "zes-airport-bts", title: "Airport, with behind the scenes", role: "Shot and edited", shape: "v", secs: 36 }
     ]
   },
   {
-    id: "cardboard", title: "Cardboard Spaceship",
+    id: "cardboard", title: "Cardboard Spaceship", grid: "h2",
     meta: [["Video editor intern", "Summer 2026"]],
     about: "Commercial spots and spec ads of different lengths, cut in Premiere Pro with MotionVFX, working directly with the Head of Production.",
     items: [
-      { file: "cs-spotify-spec", title: "Spotify spec ad", role: "Editor", shape: "h" },
-      { file: "cs-tyr-spec", title: "TYR Sport spec ad", role: "Editor", shape: "h" },
-      { file: "cs-dog-in-spain", title: "Dog in Spain", role: "Editor", shape: "h" },
-      { file: "cs-summer-time", title: "Summer time", role: "Editor", shape: "h" }
+      { file: "cs-spotify-spec", title: "Spotify spec ad", role: "Editor", shape: "h", secs: 25 },
+      { file: "cs-tyr-spec", title: "TYR Sport spec ad", role: "Editor", shape: "h", secs: 26 },
+      { file: "cs-dog-in-spain", title: "Dog in Spain", role: "Editor", shape: "h", secs: 29 },
+      { file: "cs-summer-time", title: "Summer time", role: "Editor", shape: "h", secs: 31 }
     ]
   },
   {
-    id: "citrustv", title: "CitrusTV News",
+    id: "citrustv", title: "CitrusTV News", grid: "h3",
     meta: [["Reporter and crew", "2024 to 2026"]],
     about: "Weekly 1:30 packages for News Live at 6. I pitched the stories, wrote the scripts, built the graphics in ENPS and edited in Avid.",
     items: [
@@ -347,108 +359,127 @@ const WORK = [
   }
 ];
 
-const icon = {
-  play: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg>',
-  prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
-  next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'
-};
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const playIcon = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg>';
 
+/* ---------- Intro ---------- */
+(() => {
+  const hero = document.getElementById("hero");
+  const name = document.getElementById("name");
+  const snake = document.getElementById("snake");
+  const skip = document.getElementById("skip");
+
+  // Fit the name to the stage: one line on wide screens, two lines on phones
+  const fit = () => {
+    const narrow = innerWidth < 640;
+    name.querySelector(".sp").style.display = narrow ? "block" : "inline";
+    name.querySelectorAll(".name-wrap > span:not(.sp)").forEach(s => s.style.display = narrow ? "block" : "inline");
+    name.style.fontSize = "100px";
+    const target = Math.min(hero.clientWidth * (narrow ? .86 : .84), 1100);
+    name.style.fontSize = Math.min(100 * target / name.getBoundingClientRect().width, narrow ? 96 : 150) + "px";
+  };
+  fit();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+  addEventListener("resize", fit);
+
+  let state = "intro";
+  const finish = instant => {
+    if (state === "done") return;
+    state = "done";
+    snake.pause();
+    const done = () => { hero.classList.add("is-done"); document.body.classList.add("intro-done"); };
+    if (instant) { done(); return; }
+    hero.classList.add("is-struck");
+    // The strike becomes a red swoosh; the name is revealed right behind it
+    const sw = name.querySelector(".swipe"), wrap = name.querySelector(".name-wrap");
+    const D = 720, t0 = performance.now();
+    const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    const step = now => {
+      const p = ease(Math.min(1, (now - t0) / D));
+      sw.style.transform = `translate(${(-1 + p * 2.667) * 100}%,-50%)`;
+      sw.style.opacity = p > .8 ? 1 - (p - .8) / .2 : 1;
+      const edge = Math.min(1, Math.max(0, -.3 + 1.6 * p));
+      wrap.style.clipPath = `inset(0 ${(1 - edge) * 100}% 0 0)`;
+      if (now - t0 < D) requestAnimationFrame(step);
+      else { sw.style.opacity = 0; wrap.style.clipPath = "none"; done(); }
+    };
+    requestAnimationFrame(step);
+  };
+  skip.addEventListener("click", () => finish(true));
+
+  if (reduce || location.hash) { finish(true); return; }
+
+  snake.addEventListener("ended", () => finish(false));
+  const started = snake.play();
+  // If the browser blocks autoplay (e.g. low-power mode), go straight to the name
+  const guard = setTimeout(() => { if (snake.paused || snake.currentTime === 0) finish(true); }, 2000);
+  if (started) started.catch(() => { clearTimeout(guard); finish(true); });
+})();
+
+/* ---------- Chapters ---------- */
 const workEl = document.getElementById("work");
 WORK.forEach(sec => {
   const meta = sec.meta.map(([a, b]) => `<span>${a ? `<strong>${esc(a)}</strong> ` : ""}${esc(b)}</span>`).join("");
-  const frames = sec.items.map(it => {
-    const cls = `frame frame--${it.shape}${it.file ? "" : " frame--empty"}`;
+  const clips = sec.items.map(it => {
     if (!it.file) {
-      return `<div class="${cls}"><div class="frame__clip">${esc(it.title)}</div><div class="frame__edge"><b>&nbsp;</b></div></div>`;
+      return `<div class="clip clip--${it.shape} clip--empty"><div class="clip__screen">${esc(it.title)}</div></div>`;
     }
-    return `<div class="${cls}">
-      <button class="frame__clip" data-file="${it.file}" data-title="${esc(it.title)}" data-role="${esc(it.role || "")}" aria-label="Play ${esc(it.title)}">
+    return `<div class="clip clip--${it.shape}">
+      <button class="clip__screen" data-file="${it.file}" data-title="${esc(it.title)}" data-role="${esc(it.role || "")}" data-secs="${it.secs || 0}" aria-label="Play ${esc(it.title)}">
         <img src="posters/${it.file}.jpg" alt="" loading="lazy">
-        <video muted loop playsinline preload="none" data-src="videos/${it.file}.mp4"></video>
-        <span class="frame__play" aria-hidden="true">${icon.play}</span>
+        <span class="clip__scrub" aria-hidden="true"></span>
+        <span class="clip__tc" aria-hidden="true">0:00</span>
+        <span class="clip__bar" aria-hidden="true"><i></i><b></b></span>
+        <span class="clip__play" aria-hidden="true">${playIcon}</span>
       </button>
-      <div class="frame__edge"><b>${esc(it.title)}</b><span>${esc(it.role || "")}</span></div>
+      <div class="clip__cap"><b>${esc(it.title)}</b><span>${esc(it.role || "")}</span></div>
     </div>`;
   }).join("");
   workEl.insertAdjacentHTML("beforeend", `
-    <section class="reel" id="${sec.id}" aria-labelledby="${sec.id}-t">
-      <div class="reel__head">
+    <section class="chapter" id="${sec.id}" aria-labelledby="${sec.id}-t">
+      <div class="chapter__head">
+        <h2 class="chapter__title display" id="${sec.id}-t">${esc(sec.title)}</h2>
         <div>
-          <h2 class="reel__title display" id="${sec.id}-t">${esc(sec.title)}</h2>
-          <div class="reel__meta">${meta}${sec.tag ? `<span class="reel__tag">${esc(sec.tag)}</span>` : ""}</div>
-          <p class="reel__about">${esc(sec.about)}</p>
-        </div>
-        <div class="reel__nav">
-          <button class="arrow" data-dir="-1" aria-label="Scroll ${esc(sec.title)} left">${icon.prev}</button>
-          <button class="arrow" data-dir="1" aria-label="Scroll ${esc(sec.title)} right">${icon.next}</button>
+          <div class="chapter__meta">${meta}${sec.tag ? `<span class="chapter__tag">${esc(sec.tag)}</span>` : ""}</div>
+          <p class="chapter__about">${esc(sec.about)}</p>
         </div>
       </div>
-      <div class="strip" tabindex="0" role="region" aria-label="${esc(sec.title)} videos"><div class="film">${frames}</div></div>
+      <div class="grid grid--${sec.grid}">${clips}</div>
+      ${sec.id === "zes" ? '<p class="scrub-hint">Move across a video to scrub through it. Click to watch.</p>' : ""}
     </section>`);
 });
 
-/* Strips: arrow buttons, drag to scroll, button state */
-document.querySelectorAll(".reel").forEach(reel => {
-  const strip = reel.querySelector(".strip");
-  const [prev, next] = reel.querySelectorAll(".arrow");
-  const update = () => {
-    prev.disabled = strip.scrollLeft < 4;
-    next.disabled = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4;
-  };
-  [prev, next].forEach(b => b.addEventListener("click", () =>
-    strip.scrollBy({ left: b.dataset.dir * strip.clientWidth * 0.75, behavior: "smooth" })));
-  strip.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  update();
-
-  let down = false, startX = 0, startLeft = 0, moved = false;
-  strip.addEventListener("pointerdown", e => {
-    if (e.pointerType !== "mouse") return;
-    down = true; moved = false; startX = e.clientX; startLeft = strip.scrollLeft;
-  });
-  window.addEventListener("pointermove", e => {
-    if (!down) return;
-    const dx = e.clientX - startX;
-    if (!moved && Math.abs(dx) > 6) { moved = true; strip.classList.add("is-dragging"); }
-    if (moved) strip.scrollLeft = startLeft - dx;
-  });
-  window.addEventListener("pointerup", () => {
-    if (!down) return;
-    down = false;
-    if (moved) {
-      strip.addEventListener("click", e => { e.stopPropagation(); e.preventDefault(); }, { capture: true, once: true });
-      requestAnimationFrame(() => strip.classList.remove("is-dragging"));
-    }
-  });
-});
-
-/* Hover preview (mouse only) */
-const canHover = matchMedia("(hover:hover) and (pointer:fine)").matches;
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (canHover && !reduce) {
-  document.querySelectorAll(".frame__clip[data-file]").forEach(clip => {
-    const v = clip.querySelector("video");
-    let t;
-    clip.addEventListener("mouseenter", () => {
-      t = setTimeout(() => {
-        if (!v.src) v.src = v.dataset.src;
-        v.currentTime = 0;
-        v.play().then(() => clip.classList.add("is-previewing")).catch(() => {});
-      }, 180);
+/* ---------- Hover-to-scrub ---------- */
+if (matchMedia("(hover:hover) and (pointer:fine)").matches) {
+  const FRAMES = 20;
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+  document.querySelectorAll(".clip__screen[data-file]").forEach(scr => {
+    const strip = scr.querySelector(".clip__scrub"), bar = scr.querySelector(".clip__bar i"), head = scr.querySelector(".clip__bar b"), tc = scr.querySelector(".clip__tc");
+    const secs = +scr.dataset.secs;
+    let loaded = false;
+    scr.addEventListener("pointerenter", () => {
+      if (!loaded) { strip.style.backgroundImage = `url(sprites/${scr.dataset.file}.jpg)`; loaded = true; }
+      scr.classList.add("is-scrubbing");
     });
-    clip.addEventListener("mouseleave", () => {
-      clearTimeout(t); clip.classList.remove("is-previewing"); v.pause();
+    scr.addEventListener("pointermove", e => {
+      const r = scr.getBoundingClientRect();
+      const f = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 0.9999);
+      const i = Math.floor(f * FRAMES);
+      strip.style.backgroundPosition = `${(i / (FRAMES - 1)) * 100}% 0`;
+      bar.style.width = head.style.left = (f * 100) + "%";
+      tc.textContent = `${fmt(f * secs)} / ${fmt(secs)}`;
     });
+    scr.addEventListener("pointerleave", () => scr.classList.remove("is-scrubbing"));
   });
 }
 
-/* Full player */
+/* ---------- Player ---------- */
 const player = document.getElementById("player");
 const pv = document.getElementById("playerVideo");
 let lastClip = null;
 document.addEventListener("click", e => {
-  const clip = e.target.closest(".frame__clip[data-file]");
+  const clip = e.target.closest(".clip__screen[data-file]");
   if (!clip) return;
   lastClip = clip;
   pv.src = `videos/${clip.dataset.file}.mp4`;
@@ -458,9 +489,8 @@ document.addEventListener("click", e => {
   player.showModal();
   pv.play().catch(() => {});
 });
-const closePlayer = () => player.close();
-document.getElementById("playerClose").addEventListener("click", closePlayer);
-player.addEventListener("click", e => { if (e.target === player) closePlayer(); });
+document.getElementById("playerClose").addEventListener("click", () => player.close());
+player.addEventListener("click", e => { if (e.target === player) player.close(); });
 player.addEventListener("close", () => { pv.pause(); pv.removeAttribute("src"); pv.load(); lastClip && lastClip.focus(); });
 
 /* Firstake preview: types example requests */
@@ -486,7 +516,8 @@ player.addEventListener("close", () => { pv.pause(); pv.removeAttribute("src"); 
   new IntersectionObserver((ents, obs) => { if (ents[0].isIntersecting) { obs.disconnect(); run(); } }, { threshold: .3 }).observe(demo);
 })();
 
-/* Highlight current section in nav */
+
+/* ---------- Highlight current section in nav ---------- */
 const links = [...document.querySelectorAll(".nav ul a")];
 const targets = links.map(a => document.querySelector(a.getAttribute("href")));
 const navObs = new IntersectionObserver(ents => {
