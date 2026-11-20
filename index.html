@@ -168,18 +168,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- About ---------- */
 .about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,90px);padding:clamp(90px,14vh,160px) var(--pad) 0;align-items:start}
-.about__photo{position:relative}
+.about__photo{position:relative;align-self:stretch}
 .about__photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;background:var(--red);border-radius:3px}
-.about__photo img{position:relative;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:3px}
+.about__photo img{position:relative;width:100%;height:100%;min-height:420px;object-fit:cover;object-position:50% 20%;border-radius:3px}
 .about__title{font-size:clamp(40px,6.4vw,96px)}
-.about__bio{max-width:60ch;margin-top:22px;display:grid;gap:14px;font-size:18px}
-.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line);font-size:16px}
+.about__bio{max-width:62ch;margin-top:22px;display:grid;gap:14px;font-size:17px;line-height:1.6}
+.about__more{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,90px);padding-top:30px;border-top:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;align-content:start;font-size:16px}
 .facts dt{color:var(--mute)}
-.skills{margin-top:30px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 28px}
+.skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 28px}
 .skills h3{font-size:15px;font-weight:650;margin-bottom:8px;color:var(--red-hot);font-variation-settings:"wdth" 115}
 .skills ul{list-style:none;color:var(--mute);font-size:15px;line-height:1.75}
 .about{}@media (max-width:1100px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:860px){.about{grid-template-columns:1fr}.about__photo{max-width:420px}}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about__photo{max-width:420px;align-self:start}.about__photo img{height:auto;aspect-ratio:4/5;min-height:0}.about__more{grid-template-columns:1fr}}
 
 /* ---------- Contact ---------- */
 .contact{padding:clamp(110px,16vh,180px) var(--pad) 40px}
@@ -274,12 +275,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <h2 class="about__title display" id="about-title">About</h2>
       <div class="about__bio">
         <p>Hi! I’m Zara Suvanto, a Television, Radio &amp; Film student at Syracuse University’s Newhouse School, with a minor in Marketing. I’m super passionate about storytelling, being creative, and finding new ways to bring ideas to life through video, media, and technology!</p>
-        <p>My experience started in news reporting, spending the past two years with CitrusTV News at Syracuse, where I reported, filmed, edited, and produced weekly news packages. While I loved news, I wanted to explore more of the media industry, especially production, marketing, and business.</p>
-        <p>This past summer, I started my own video production company, ZES Creative, creating video and social media content for local businesses in Westchester, NY. I actually found my first clients by going door to door! Running ZES has taught me so much about content creation, marketing my own business, and working directly with clients.</p>
-        <p>Through creating videos for ZES, I also started thinking about how AI could make the creative process easier, which led me to develop the idea for Firstake, a creative tool focused on helping people bring their video ideas to life. It’s been really exciting to explore both the creative and business sides of building something from scratch.</p>
+        <p>This past summer, I started my own video production company, ZES Creative, creating video and social media content for local businesses in Westchester, NY. I actually found my first clients by going door to door! Running ZES has taught me so much about content creation, marketing my own business, and working directly with clients. It also got me thinking about how AI could make the creative process easier, which led me to develop Firstake, a creative tool focused on helping people bring their video ideas to life.</p>
         <p>I also spent the summer as a video editing intern at Cardboard Spaceship, where I worked on commercial projects and gained hands-on experience in professional post-production. I also had the opportunity to explore new AI tools and learn how they’re changing the way creative content is produced.</p>
-        <p>My experiences have given me the chance to explore so many different sides of the industry, and I’m always excited to learn more! I’m currently looking for Summer 2027 internship opportunities in New York City across creative media, marketing, social media, production, entertainment, and the business side of the industry. I’m really open to exploring different roles, continuing to learn, and bringing my creativity and experience to a new team!</p>
+        <p>My experiences have given me the chance to explore so many different sides of the industry, and I’m always excited to learn more! I’m currently looking for Summer 2027 internship opportunities in New York City across creative media, marketing, social media, production, entertainment, and the business side of the industry.</p>
       </div>
+
+    </div>
+      <div class="about__more">
       <dl class="facts">
         <dt>School</dt><dd>Syracuse University, S.I. Newhouse School of Public Communications</dd>
         <dt>Studying</dt><dd>B.S. Television, Radio &amp; Film, minor in Marketing</dd>
