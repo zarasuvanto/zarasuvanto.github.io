@@ -93,8 +93,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- Chapters ---------- */
 .chapter{padding:clamp(90px,14vh,150px) var(--pad) 0}
-.chapter__head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px 56px;align-items:center;margin-bottom:34px}
-.chapter__title{font-size:clamp(36px,6.2vw,92px)}
+.chapter__head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px clamp(40px,5vw,80px);align-items:center;margin-bottom:34px}
+.chapter__titlewrap{container-type:inline-size;min-width:0}
+.chapter__title{font-size:clamp(36px,6.2vw,92px);font-size:min(clamp(36px,6.2vw,92px),10cqw)}
 .chapter__meta{display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--mute);font-size:15px;margin-bottom:8px}
 .chapter__meta strong{color:var(--paper);font-weight:600}
 .chapter__tag{color:var(--red-hot);font-weight:700;font-variation-settings:"wdth" 115}
@@ -494,7 +495,7 @@ WORK.forEach(sec => {
   workEl.insertAdjacentHTML("beforeend", `
     <section class="chapter" id="${sec.id}" aria-labelledby="${sec.id}-t">
       <div class="chapter__head">
-        <h2 class="chapter__title display" id="${sec.id}-t">${esc(sec.title)}</h2>
+        <div class="chapter__titlewrap"><h2 class="chapter__title display" id="${sec.id}-t">${esc(sec.title)}</h2></div>
         <div>
           <div class="chapter__meta">${meta}${sec.tag ? `<span class="chapter__tag">${esc(sec.tag)}</span>` : ""}</div>
           <p class="chapter__about">${esc(sec.about)}</p>
