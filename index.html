@@ -139,7 +139,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <style>
 /* ---------- Firstake ---------- */
 .ft{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,90px);align-items:center;padding:clamp(90px,14vh,160px) var(--pad) 0}
-.ft__title{font-size:clamp(40px,6.4vw,96px)}
+.ft > div:first-child{container-type:inline-size;min-width:0}
+.ft__title{font-size:clamp(40px,6.4vw,96px);font-size:min(clamp(40px,6.4vw,96px),12cqw)}
 .ft__role{margin-top:16px;color:var(--mute);font-size:15px}
 .ft__role strong{color:var(--paper);font-weight:600}
 .ft__copy{max-width:56ch;margin-top:20px}
